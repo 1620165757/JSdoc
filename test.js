@@ -1,2 +1,5 @@
-var a = true;
-console.info(1 == true);
+(() => {
+
+    let a = Object('111');
+    console.log(a)
+})();
