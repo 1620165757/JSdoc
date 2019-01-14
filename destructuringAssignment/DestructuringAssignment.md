@@ -69,7 +69,38 @@
     let {toString:ts} = 123;
     //ts === Number.prototype.toString
 ```
-####二、注意事项
+#####5、函数参数的解构赋值
+```javascript
+    /*这两种的默认值的解构是不一样的*/
+    function move1({x = 0, y = 0} = {}) {}
+    function move2({x, y} = { x: 0, y: 0 }) {}
+    // move({x: 3}); // [3, undefined]
+    // move({}); // [undefined, undefined]
+    //move(); // [0, 0]
+```
+
+####二、用途
+#####1、交换变量
+```javascript
+    let x = 1;
+    let y = 2;
+    [x, y] = [y, x];
+```
+#####2、遍历map结构
+```javascript
+    const map = new Map();
+    map.set('first', 'hello');
+    map.set('second', 'world');
+    for (let [key, value] of map) {
+      console.log(key + " is " + value);
+    }
+```
+#####3、输入模块的指定方法
+```javascript
+    const { SourceMapConsumer, SourceNode } = require("source-map");
+```
+
+####三、注意事项
 #####1、如果等号右边是不可遍历解构，那么将会报错
 #####2、
 ```javascript
