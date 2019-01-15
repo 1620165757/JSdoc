@@ -28,6 +28,33 @@
     obj[sym] = 2
     Object.defineProperty(a, sym, { value: 'Hello!' });
 ```
+####四、属性名的遍历
+```javascript
+    /*Symbol不能被for...in、for...of、Object.keys()、
+    Object.getOwnPropertyNames()、Object.getOwnPropertyNames()
+    所使用，但是可以用Object.getOwnPropertySymbols，返回一个数组，
+    Reflect.ownKeys返回所以类型的键名
+     */
+```
+####五、Symbol.for()、Symbol.keyFor()
+```javascript
+    /*Symbol.for()重新使用一个Symbol值，接受一个字符串，然后搜索有没有已该参数作为名称的
+    * Symbol值，如果有，返回这个Symbol，否则新建立一个Symbol值,Symbol.for()和Symbol()
+    * 虽然都会生成新的Symbol，但是Symbol.for()会被登记在全局中使用*/
+    let s1 = Symbol('s');
+    let s2 = Symbol('s');
+    //s1===s2;
+    
+    /*Symbol.keyFor()返回一个全局登记的Symbol值*/
+    let s1 = Symbol.for('foo')
+    Symbol.keyFor(s1)
+    //foo
+    let s2 = Symbol('koo')
+    Symbol.keyFor(s2)
+    //undefined
+   
+    
+```
 
 ####注意事项
 #####1、相同参数的Symbol值是不一样的

@@ -1,17 +1,20 @@
 (() => {
-
-    // let a = Symbol('aaa');
-    // let obj = {
-    //     a: 1,
-    //     [a]: 2,
-    //     [Symbol()]: 3
+    // let z = Symbol();
+    // let a = {
+    //     x: Symbol(),
+    //     z:1
     // };
-    // console.log(obj[Symbol()])
-
-    let sym = Symbol('sym');
-    let obj = {
-        [sym]:1
+    let a = Symbol('a');
+    let b = Symbol('b');
+    let c = Symbol('c');
+    const obj = {
+        [c]: 1
     };
-    obj[sym] = 2;
-    console.log(obj)
+
+
+    obj[a] = 'Hello';
+    obj[b] = 'World';
+    // for (let y in obj) {
+    //     console.log(y)
+    // }
 })();
