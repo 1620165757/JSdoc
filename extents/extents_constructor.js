@@ -29,4 +29,23 @@ console.log(cat.name);//无法获取父类原型上的eat方法
 //缺点2：只能继承父类的实例属性和方法，原型方法和属性无法继承
 //缺点3：无法实现父类的复用，还是复制问题，影响性能
 
+/**
+ *构造函数继承
+ *1.无法继承父类原型链上的属性和方法，
+ *2.是对父类实例的拷贝
+ */
+
+function Parent1(color) {
+    this.color = color || 'red'
+}
+
+Parent1.prototype.size = 'big'
+
+function Son1(color) {
+    Parent1.call(this, color)
+}
+
+const son1 = new Son1('blue');
+console.log(son1.color)
+console.log(son1.size)
 
