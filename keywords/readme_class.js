@@ -3,10 +3,13 @@ class AA {
         this.a = 1
     }
 
+    //b和c需要加插件@babel/plugin-proposal-class-properties
     b = 2
+    //实例方法，实例的hasOwnProperty，返回true
     c = function () {
     }
 
+    //原型方法，实例的hasOwnProperty，返回false
     d() {
     }
 
@@ -14,7 +17,7 @@ class AA {
     }
 }
 
-console.log(new AA())
+console.log('AA', new AA())
 
 /**babel实现原理*/
 function _defineProperties(target, props) {
@@ -69,16 +72,21 @@ _createClass(BB, [{
     }
 }]);
 
-console.log(new BB())
+console.log('BB', new BB())
 
-/**简易实现原理*/
+/**
+ * 简易实现原理
+ * 1.class的constructor
+ * 2.constructor外部的属性和函数表达式通过Object.defineProperty挂载到this（实例）上
+ * 3.所有方法都是定义在原型上的，例如constructor（排除函数表达式）
+ * @constructor
+ */
 function CC() {
     const params = {
         enumerable: true,
         configurable: true,
         writable: true
     }
-    console.log('this',this)
     Object.defineProperty(this, 'b', {value: 2, ...params})
     Object.defineProperty(this, 'c', {
         value: function () {
@@ -86,15 +94,12 @@ function CC() {
     })
     this.a = 1
 }
+
 CC.e = function () {
 }
 CC.prototype.d = function () {
 }
-console.log(new CC())
-
-//class的实例属性（constructor里面的属性），对应构造函数的实例属性
-//class的其他属性（constructor外面的属性），对应构造函数的实例的属性
-//class的静态属性，对应构造函数.属性
+console.log('CC', new CC())
 
 // "use strict";
 //
