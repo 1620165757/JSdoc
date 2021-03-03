@@ -1,14 +1,10 @@
-class AA {
+function AA() {
+    this.a = 1
 }
 
-class BB extends AA {
-    constructor() {
-        super()
-    }
+function BB() {
+
 }
 
-console.log('AA', AA)
-// Object.setPrototypeOf(BB,AA)
-// console.log('aa',aa)
-
-console.log('BB', Reflect.construct(AA, [{a: 2}], BB))
+console.log(Reflect.construct(AA, [],BB))
+console.log(new AA())

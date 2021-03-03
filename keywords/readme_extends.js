@@ -4,7 +4,7 @@ const AA = function AA() {
     this.a = 1
 };
 
-const BB = function (_AA) {
+const __BB = function (_AA) {
     //原型链的继承
     BB.prototype = Object.create(_AA.prototype, {});
     BB.prototype.constructor = BB;
@@ -22,8 +22,8 @@ const BB = function (_AA) {
     return BB;
 }(AA);
 
-console.log('BB', BB.prototype.__proto__)
-const bb = new BB()
+console.log('BB', __BB.prototype.__proto__)
+const bb = new __BB()
 console.log('bb', bb)
 
 
