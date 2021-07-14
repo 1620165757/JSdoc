@@ -11,7 +11,7 @@ const p1 = new Promise(function (resolve, reject) {
     resolve('p1')
 });
 const p2 = new Promise(function (resolve, reject) {
-    resolve(p1)
+    resolve('p1')
 });
 //最终的状态由p1决定
 ```
@@ -23,10 +23,12 @@ let p = Promise.all([p1, p2, p3]);
 ```
 * 都是resolve，则p为resolve，返回值组成数组
 * 至少一个reject，则p为reject，返回值为第一个reject的返回值
-## 5.Promise.race()
+## 5.Promise.race([p1, p2, p3])
 概念：同Promise.all()，但是取决于第一个改变状态的promise
 ## 6.Promise.resolve()
 概念：将现有的对象转为promise实例
+## 7.Promise.allSettled([p1, p2, p3])
+概念：都返回结果才会执行，返回数组
 ```javascript
 Promise.resolve('foo')
 // 等价于
